@@ -2,7 +2,7 @@ const {newConnection} = require("../bd/bd")
 
 
 
-app.get("/tareas", async (req, res) =>{
+app.get("/tasks", async (req, res) =>{
     const conexion =  await newConnection()
 
     const results = await conexion.query(`SELECT *  FROM tasks`);
@@ -12,7 +12,7 @@ app.get("/tareas", async (req, res) =>{
     conexion.end()//siempre terminar la funcion 
 });
 
-app.get("/tareas/:id", async (req, res) =>{
+app.get("/task/:id", async (req, res) =>{
     const conexion =  await newConnection()
     const id = req.params.id
     const results = await conexion.query(`SELECT *  FROM tasks where id = ?`, id);
@@ -24,7 +24,7 @@ app.get("/tareas/:id", async (req, res) =>{
 
 
 
-app.delete("/tareas/:id", async (req, res) =>{
+app.delete("/task/:id", async (req, res) =>{
     const conexion =  await newConnection()
     const id = req.params.id
     const results = await conexion.query(`DELETE  FROM tasks where id = ?`, id);
@@ -34,7 +34,7 @@ app.delete("/tareas/:id", async (req, res) =>{
     conexion.end()//siempre terminar la funcion 
 });
 
-app.post("/tareas", async (req, res)=>{
+app.post("/task", async (req, res)=>{
     console.log(req.body)
     const conexion = await newConnection()
     const { title } = req.body
@@ -47,7 +47,7 @@ app.post("/tareas", async (req, res)=>{
 });
 
 
-app.put("/tareas/:id", async (req, res) => {
+app.put("/tasks/:id", async (req, res) => {
     const conexion = await newConnection();
 
     try {

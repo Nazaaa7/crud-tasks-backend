@@ -1,4 +1,4 @@
-const {newConnection} = require("./src/bd/bd")
+const {newConnection} = require("./bd/bd")
 const express = require("express");
 const app =express()
 

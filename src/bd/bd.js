@@ -5,7 +5,7 @@ const newConnection = async () =>{//funcion asincrona para poder usar el await.
     const conexion = await mysql.createConnection({//no te olvides del await 
         host: "localhost", 
         user:"root",
-        database: "tasks", //nombre bd 
+        database: "tasks_db", //nombre bd 
         password: ""//no exige la contraseña
     })
 
