@@ -1,10 +1,27 @@
-const {newConnection} = require("./bd/bd")
-const express = require("express");
-const app =express()
+// const express = require("express");
+// const app = express()
 
-app.listen(3000)
-
-app.use(express.json())
+// app.listen(3000)
 
 
-console.log("servidor iniciado")
+// app.use(express.json())
+
+// const taskRoutes = require('../src/routes/tareas.routes');
+// app.use('/tasks', taskRoutes);
+
+// console.log("servidor iniciado")
+
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+const taskRoutes = require('../src/routes/tareas.routes');
+
+// Middleware para parsear JSON
+app.use(express.json());
+
+// Rutas
+app.use('/', taskRoutes);
+
+app.listen(port, () => {
+    console.log(`Server is running on port ${port}`);
+});

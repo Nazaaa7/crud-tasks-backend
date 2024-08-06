@@ -1,11 +1,8 @@
-const router = require('express').Router();
+const express = require('express');
+const router = express.Router();
+const {
+  obtenerTareas,
+} = require('../controllers/tasks.controller');
 
-router.get('/tareas', (req, res) => {
-    res.send('tareass')
-})
-
-
-router.get('/tareas2 ',( req, res) => {
-    res.send('tareass 2')
-})
+router.get('/', obtenerTareas);
 module.exports = router;

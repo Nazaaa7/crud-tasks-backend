@@ -1,21 +1,17 @@
-const mysql = require("mysql2/promise"); //importar la libreria 
+// Requerimos mysql.
+const mysql = require('mysql2/promise');
 
-const newConnection = async () =>{//funcion asincrona para poder usar el await.
-    //el await solo se pude usar con el async o con el import (en la libreria)
-    const conexion = await mysql.createConnection({//no te olvides del await 
-        host: "localhost", 
-        user:"root",
-        database: "tasks_db", //nombre bd 
-        password: ""//no exige la contraseña
+// Creamos una funcion para realizar la conexion a la bd.
+const connectDB = async ()=> {
+    return await mysql.createConnection({
+        host: 'localhost',
+        user: 'root',
+        password: '',
+        database: 'tasks_db'
     })
-
-//     const [results, fields]= await conexion.query(`INSERT INTO tabla1 (descripcion) values ('holaaaaa')`);
-
-//     console.log(results);
-//     conexion.end()
-// }
-    
-return conexion
 }
 
-module.exports = {newConnection}
+// Exportamos la funcion para realizar la conexion desde cualquier archivo.
+module.exports = {
+    connectDB
+}
