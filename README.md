@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> master
 # CRUD-tasks-backend
 
 Este proyecto se utiliza para la gestión de tareas, utilizando  Node.js, Express y MySQL. Proporciona operaciones CRUD básicas para la administración de tareas.

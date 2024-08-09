@@ -1,0 +1,17 @@
+{
+  "dependencies": {
+    "express": "^4.19.2",
+    "mysql2": "^3.11.0"
+  },
+  "name": "crud-tasks-backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "devDependencies": {},
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch main.js"
+  },
+  "author": "Naza Garcia",
+  "license": "ISC",
+  "description": ""
+}
