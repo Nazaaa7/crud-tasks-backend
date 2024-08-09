@@ -11,18 +11,16 @@
 
 // console.log("servidor iniciado")
 
-//const express = require('express');
-
-import express, {json} from  "express"; 
-import router from  "./routes/tareas.routes.js"
+const express = require('express');
 const app = express();
 const port = process.env.PORT || 4000;
+const taskRoutes = require('../src/routes/tareas.routes');
 
-
+// Middleware para parsear JSON
 app.use(express.json());
 
 // Rutas
-app.use('/', router);
+app.use('/', taskRoutes);
 
 app.listen(port, () => {
     console.log(`Servidor conectado en el puerto${port}`);

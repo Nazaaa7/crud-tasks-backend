@@ -1,9 +1,9 @@
 // Requerimos mysql.
-import { createConnection } from 'mysql2/promise';
+const mysql = require('mysql2/promise');
 
 // Creamos una funcion para realizar la conexion a la bd.
 const connectDB = async ()=> {
-    return await createConnection({
+    return await mysql.createConnection({
         host: 'localhost',
         user: 'root',
         password: '',
@@ -12,4 +12,6 @@ const connectDB = async ()=> {
 }
 
 // Exportamos la funcion para realizar la conexion desde cualquier archivo.
-export {connectDB}
+module.exports = {
+    connectDB
+}

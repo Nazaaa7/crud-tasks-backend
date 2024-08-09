@@ -1,5 +1,7 @@
 
-import { connectDB }  from "../bd/bd.js";
+const { connectDB } = require("../bd/bd");
+
+const ctrl = {};
 
 //controlador oara validar los datos
 const validarDatos = ({ title, description, isComplete }) => {
@@ -16,7 +18,7 @@ const validarDatos = ({ title, description, isComplete }) => {
 };
         
 // Controlador para obtener todas las tareas
-export const obtenerTareas = async (req, res) => {
+ctrl.obtenerTareas = async (req, res) => {
     try {
         const connection = await connectDB();
         const [results] = await connection.query('SELECT * FROM tasks');
@@ -28,7 +30,7 @@ export const obtenerTareas = async (req, res) => {
     }
 };
 // Controlador para obtener una tarea por su id
-export const obtenerTarea = async (req, res) => {
+ctrl.obtenerTarea = async (req, res) => {
     try {
         const connection = await connectDB();
         const id = req.params.id
@@ -41,7 +43,7 @@ export const obtenerTarea = async (req, res) => {
 };
 
 // Controlador para agregar una tarea
-export const agregarTarea = async (req, res) => {
+ctrl.agregarTarea = async (req, res) => {
     try {
         const connection = await connectDB();
         const { title } = req.body
@@ -53,7 +55,8 @@ export const agregarTarea = async (req, res) => {
         const error = validarDatos({ title, description, isComplete });
         if (error) {
             return res.status(400).send(error);
-        }
+          }
+       
         res.send("Nueva tarea agregada");
     } catch (error) {
         console.error(error);
@@ -62,7 +65,7 @@ export const agregarTarea = async (req, res) => {
 };
 
 // Controlador para editar una tarea, por el id
-export const editarTarea = async (req, res) => {
+ctrl.editarTarea = async (req, res) => {
     try {
         const connection = await connectDB();
         const id = req.params.id;
@@ -73,20 +76,21 @@ export const editarTarea = async (req, res) => {
         const results = await connection.query('UPDATE tasks SET title = ? , description = ? , isComplete = ? WHERE id = ?', [title, description, isComplete, id]);
         
         // Validar datos
-        const error = validarDatos({ title, description, isComplete });
-                if (error) {
-                    return res.status(400).send(error);
-                    }
+               const error = validarDatos({ title, description, isComplete });
+                   if (error) {
+                       return res.status(400).send(error);
+                      }
+              
         res.send("Tarea editada");
-    } catch (error) {
-        console.error(error);
-        res.status(500).send("Error en la base de datos");
-        } 
+     } catch (error) {
+         console.error(error);
+         res.status(500).send("Error en la base de datos");
+         } 
         
     };
 
     // Controlador para eliminar una tarea
- export const eliminarTarea = async (req, res) => {
+ctrl.eliminarTarea = async (req, res) => {
     try {
         const connection = await connectDB();
         const id = req.params.id;
@@ -97,4 +101,7 @@ export const editarTarea = async (req, res) => {
         console.error(error);
         res.status(500).send("Error en la base de datos");
         
-}};
+       }
+   };
+    module.exports = ctrl;
+    

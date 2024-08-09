@@ -7,7 +7,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "devDependencies": {},
-  "type": "module",
   "scripts": {
     "dev": "node --watch main.js"
   },
