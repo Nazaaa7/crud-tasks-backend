@@ -1,19 +1,19 @@
 
 import { connectDB }  from "../bd/bd.js";
 
-//controlador oara validar los datos
-const validarDatos = ({ title, description, isComplete }) => {
-    if (typeof title !== 'string' || title.trim() === '' || title.length > 255) {
-        return 'El título debe ser una cadena y  máximo de 255 caracteres';
-    }
-    if (typeof description !== 'string' || description.trim() === '') {
-        return 'La descripción debe ser una cadena no vacía';
-    }
-    if (typeof isComplete !== 'boolean') {
-        return 'El estado de finalización debe ser un valor booleano';
-    }
-    return null;
-};
+// //controlador oara validar los datos
+// const validarDatos = ({ title, description, isComplete }) => {
+//     if (typeof title !== 'string' || title.trim() === '' || title.length > 255) {
+//         return 'El título debe ser una cadena y  máximo de 255 caracteres';
+//     }
+//     if (typeof description !== 'string' || description.trim() === '') {
+//         return 'La descripción debe ser una cadena no vacía';
+//     }
+//     if (typeof isComplete !== 'boolean') {
+//         return 'El estado de finalización debe ser un valor booleano';
+//     }
+//     return null;
+// };
         
 // Controlador para obtener todas las tareas
 export const obtenerTareas = async (req, res) => {
